@@ -4,10 +4,14 @@ import LaunchDetails from './components/LaunchDetails';
 import './App.css'
 
 const App = () =>{
+  const [id, setId] = React.useState(13);
+  const handleIdChange = React.useCallback((newId:any) => {
+    setId(newId);
+  }, []);
   return(
     <div className='App'>
-      <Launch />
-      <LaunchDetails />
+      <Launch handleIdChange={handleIdChange} />
+      <LaunchDetails id={id} />
     </div>
   )
 }

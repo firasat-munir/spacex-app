@@ -2,8 +2,16 @@ import React from 'react'
 import { useLaunchInfoQuery } from '../../generated/graphql'
 import LaunchDetails from './LaunchDetails'
 
-const LaunchDetailsContainer=()=>{
-    const {data,error,loading}=useLaunchInfoQuery({variables:{id:"13"}})
+interface OwnProps{
+    id:number;
+}
+
+const LaunchDetailsContainer:React.FC<OwnProps>=({id})=>{
+    const {data,error,loading,refetch}=useLaunchInfoQuery({variables:{id:String(id)},
+     });
+     React.useEffect(() => {
+        refetch({ id: String(id) });
+      }, [refetch, id]);
 
     if(loading){
         return <div>Data is Loading</div>
