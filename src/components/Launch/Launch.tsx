@@ -17,7 +17,7 @@ const Launch: React.FC<Props> = ({data,handleIdChange})=>(
             {!!data.launches && data.launches.map(
                 (launch,i)=>!!launch && (
                     <li key={i} className='LaunchesItem' onClick={() => handleIdChange(launch.flight_number!)}>
-                        {launch.mission_name} - {launch.launch_year} ({JSON.stringify(launch.launch_success)})
+                        {launch.mission_name} - {launch.launch_year}
                     </li>
                 )
             )}
